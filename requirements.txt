@@ -1,3 +1,5 @@
+pydantic
+outscraper
 fastapi
 uvicorn
 openai

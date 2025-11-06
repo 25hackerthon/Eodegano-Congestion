@@ -9,7 +9,21 @@ from pydantic import BaseModel
 
 load_dotenv()
 
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI(title="AI 혼잡도 조회 및 경로 최적화 API", version="1.0")
+
+origins = [
+    "*"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 client = ApiClient(api_key=os.getenv("OUTSCRAPER_API_KEY"))
 
