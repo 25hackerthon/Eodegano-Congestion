@@ -1,9 +1,13 @@
 from fastapi import FastAPI, Query
 from outscraper import ApiClient
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 app = FastAPI(title="AI 혼잡도 조회 API", version="1.0")
 
-client = ApiClient(api_key="Y2I3Y2RhYTc5OWY2NGUxNzk2MmUwOTlmMWIzODQwZWN8MjRjNDFiZTg3Nw")
+client = ApiClient(api_key=os.getenv("API_KEY"))
 
 @app.get("/congestion")
 def get_congestion(place: str = Query(..., description="조회할 장소 이름")):
